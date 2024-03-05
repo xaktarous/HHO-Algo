@@ -56,7 +56,7 @@ public class Main {
         servers.add(new Server("B"));
         return servers;
     }
-      // FONCTION DE GENERATION DES SOLUTIONS ALEATOIRE
+      // METHOD DE GENERATION DES SOLUTIONS ALEATOIRE
     static List<Server> randomSol(List<Server> servers, List<Task> tasks) {
 	    //reset
         List<Server> solution = new ArrayList<>();
@@ -73,7 +73,7 @@ public class Main {
         return solution;
     }
      
-     // FONCTION OBJECTIVE (CALCULER COMPLETION TIME)
+     // METHOD OBJECTIVE (CALCULER COMPLETION TIME)
     static int objectiveFunc(List<Server> servers) {
         List<Integer> times = new ArrayList<>();
         for (Server server : servers) {
@@ -90,7 +90,7 @@ public class Main {
         }
         return max(times);
     }
-   // FONCTION MAX() 
+   // METHOD MAX() 
     static int max(List<Integer> times) {
         int max = 0;
         for (int time : times) {
@@ -100,7 +100,7 @@ public class Main {
         }
         return max;
     }
-     // FONCTION UPDATE (ECHANGER LES TACHES ENTRE  DEUX SERVEURS)
+     // METHOD UPDATE (ECHANGER LES TACHES ENTRE  DEUX SERVEURS)
     static List<Server> update(List<Server> servers) {
         // Cloner la liste de serveurs
         List<Server> newSolution = new ArrayList<>();
@@ -136,7 +136,7 @@ public class Main {
 
         return newSolution;
     }
-     // LA FONCTION D'ALGORITHME
+     // LA METHOD D'ALGORITHME
     static Object[] harrisHawksOptimizationFunc(int size, List<Server> servers, List<Task> tasks, int iterations) {
         int bestCompletion = Integer.MAX_VALUE;
         List<Server> bestSolution = null; 
