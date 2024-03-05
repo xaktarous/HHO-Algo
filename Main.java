@@ -58,6 +58,7 @@ public class Main {
     }
       // FONCTION DE GENERATION DES SOLUTIONS ALEATOIRE
     static List<Server> randomSol(List<Server> servers, List<Task> tasks) {
+	    //reset
         List<Server> solution = new ArrayList<>();
         for (Server server : servers) {
             Server copyServer = new Server(server.id);
@@ -138,8 +139,8 @@ public class Main {
      // LA FONCTION D'ALGORITHME
     static Object[] harrisHawksOptimizationFunc(int size, List<Server> servers, List<Task> tasks, int iterations) {
         int bestCompletion = Integer.MAX_VALUE;
-        List<Server> bestSolution = null;
-
+        List<Server> bestSolution = null; 
+        // initialization
         List<List<Server>> population = new ArrayList<>();
         for (int i = 0; i < size; i++) {
             List<Server> solution = randomSol(servers, tasks);
@@ -147,10 +148,13 @@ public class Main {
         }
 
         for (int iter = 0; iter < iterations; iter++) {
+		 //exploration
             for (int i = 0; i < size; i++) {
-                //exploration
+		// generate random sol
                 List<Server> randomSolution = randomSol(servers, tasks);
+		    //evaluation
                 int randomSolutionFitness = objectiveFunc(randomSolution);
+		    // select
                 if (randomSolutionFitness < bestCompletion) {
                     bestCompletion = randomSolutionFitness;
                     bestSolution = randomSolution;
